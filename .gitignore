@@ -42,3 +42,6 @@
 
 # Ddev config, not usefull for the test
 /.ddev
+
+# And vscode
+/.vscode
