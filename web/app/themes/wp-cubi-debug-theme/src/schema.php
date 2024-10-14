@@ -50,6 +50,15 @@ function register_post_type_event()
                 $result = $wpdb->get_row($sql_query, ARRAY_A);
                 echo $result['count'];
             }],
+            'export' => ['title' => 'Export Registrations', 'sortable' => false, 'function' => function () {
+                global $post;
+                $export_url = add_query_arg([
+                    'action' => 'export_event_registrations',
+                    'event_id' => $post->ID,
+                ], admin_url('admin-post.php'));
+            
+                echo '<a href="' . esc_url($export_url) . '" class="button">Export .xlsx file</a>';
+            }],
         ],
         'admin_filters'        => [],
     ];
